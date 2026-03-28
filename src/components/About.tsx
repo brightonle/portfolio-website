@@ -22,14 +22,12 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4 text-white/60 leading-relaxed">
             <p>
-              I&apos;m a passionate full-stack developer who loves turning ideas into
-              fast, elegant, and accessible web products. I care deeply about
-              code quality, user experience, and building things that last.
+              I&apos;m a data-focused engineer who enjoys building reliable systems that transform raw information into meaningful insights. 
+              I care about data quality, efficient workflows, and creating solutions that are both technically strong and practical for real users.
             </p>
             <p>
-              When I&apos;m not coding, you&apos;ll find me exploring new technologies,
-              contributing to open source, or working on side projects that
-              challenge me to learn something new.
+              When I&apos;m not coding, I enjoy rock climbing and running, which have taught me a lot about persistence, focus, and steady improvement. 
+              I&apos;m always looking for opportunities to keep learning and work on projects that challenge me to grow!
             </p>
             <p>
               I&apos;m currently open to new opportunities — feel free to{" "}
@@ -47,9 +45,9 @@ export default function About() {
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: "Years Experience", value: "3+" },
-              { label: "Projects Shipped", value: "20+" },
-              { label: "Technologies", value: "15+" },
-              { label: "Cups of Coffee", value: "∞" },
+              { label: "Projects Shipped", value: "10+" },
+              { label: "Technologies", value: "20+" },
+              { label: "Cups of Coffee ☕", value: "∞" },
             ].map((stat) => (
               <div
                 key={stat.label}

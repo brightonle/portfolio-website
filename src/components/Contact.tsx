@@ -10,6 +10,7 @@ import { personalInfo } from "@/lib/data";
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  
 
   return (
     <section id="contact" className="py-24 px-6 border-t border-white/5" ref={ref}>
