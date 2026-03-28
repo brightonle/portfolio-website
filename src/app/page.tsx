@@ -13,18 +13,22 @@ export default function Home() {
     <main>
       <Navbar />
 
-      {/* Hero: stays frozen/sticky, blurs as About slides over it */}
+      {/* Hero: fixed, blurs + sinks as About slides over it */}
       <ScrollStackSection>
         <Hero />
       </ScrollStackSection>
 
-      {/* About: white card that slides up over the blurred Hero */}
+      {/* About: natural height, Projects peeks below */}
       <div style={{ position: "relative", zIndex: 2, backgroundColor: "#ffffff", borderRadius: "24px 24px 0 0" }}>
         <About />
       </div>
 
+      {/* Projects: sits right below About so it peeks at the bottom */}
+      <div style={{ position: "relative", zIndex: 3, backgroundColor: "#0a0a0a" }}>
+        <Projects />
+      </div>
+
       <Skills />
-      <Projects />
       <Experience />
       <Contact />
       <Footer />

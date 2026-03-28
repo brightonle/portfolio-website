@@ -1,80 +1,103 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import GithubIcon from "@/components/icons/GithubIcon";
 import { projects } from "@/lib/data";
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((el, i) => {
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveIndex(i); },
+        { threshold: 0.5 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
+  }, []);
 
   return (
-    <section id="projects" className="scroll-mt-34 py-24 px-6 border-t border-[var(--border)]" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs text-[var(--subtle)] tracking-widest uppercase mb-3">Work</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-[var(--foreground)]">Projects</h2>
+    <section id="projects" className="grid grid-cols-2 min-h-screen">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projects.map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group border border-[var(--border)] rounded-xl p-6 hover:border-[var(--muted)] transition-all hover:bg-[var(--chip-bg)] flex flex-col"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-semibold text-[var(--foreground)]">{project.title}</h3>
-                  <div className="flex gap-3 ml-3 shrink-0">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                      aria-label="GitHub"
-                    >
-                      <GithubIcon size={16} />
-                    </a>
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                        aria-label="Live site"
-                      >
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5 flex-1">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 bg-[var(--chip-bg)] rounded-full text-[var(--muted)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      {/* Left: sticky counter */}
+      <div className="sticky top-0 h-screen flex flex-col justify-end pb-16 px-10 border-r-2 border-white/20">
+        <div className="flex overflow-hidden">
+          <span className="text-[clamp(80px,14vw,160px)] font-bold leading-none tracking-tight text-white">
+            0
+          </span>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={activeIndex}
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -60, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+              className="text-[clamp(80px,14vw,160px)] font-bold leading-none tracking-tight text-white"
+            >
+              {activeIndex + 1}
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </div>
+
+      {/* Right: PROJECTS label at top so it peeks below About, then scrolling cards */}
+      <div>
+        <div className="px-10 pt-6 pb-8">
+          <h2 className="text-[clamp(60px,12vw,130px)] font-bold uppercase leading-none tracking-tight text-white">
+            Projects
+          </h2>
+        </div>
+        {projects.map((project, i) => (
+          <div
+            key={project.title}
+            ref={(el) => { cardRefs.current[i] = el; }}
+            className="min-h-screen flex flex-col justify-center px-10 py-16 border-b-2 border-white/20 last:border-b-0"
+          >
+            <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
+            <p className="text-white/60 leading-relaxed mb-8 max-w-md">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs px-3 py-1.5 border border-white/20 rounded-full text-white/50 uppercase tracking-wider"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex gap-4">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-medium text-white hover:text-white/50 transition-colors"
+              >
+                <GithubIcon size={16} /> GitHub
+              </a>
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-white/50 transition-colors"
+                >
+                  <ExternalLink size={16} /> Live
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 }
