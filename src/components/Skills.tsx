@@ -1,51 +1,44 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { skills } from "@/lib/data";
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="skills" className="scroll-mt-20 py-24 px-6 border-t border-[var(--border)]" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs text-[var(--subtle)] tracking-widest uppercase mb-3">Skills</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-[var(--foreground)]">What I Work With</h2>
+    <section id="skills" style={{ backgroundColor: "#0a0a0a" }} className="px-12 py-24 flex">
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {skills.map((group, i) => (
-              <motion.div
-                key={group.category}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="border border-[var(--border)] rounded-xl p-6 hover:border-[var(--muted)] transition-colors"
-              >
-                <h3 className="text-sm font-semibold text-[var(--muted)] uppercase tracking-wider mb-4">
-                  {group.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="text-sm px-3 py-1 bg-[var(--chip-bg)] rounded-full text-[var(--muted)] hover:bg-[var(--chip-hover)] transition-colors"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      {/* Left: stacked identity words */}
+      <div className="w-1/2 flex items-center justify-center">
+        <div className="flex flex-col items-start">
+          <p className="text-[clamp(40px,5.5vw,80px)] font-bold uppercase tracking-tight text-white" style={{ lineHeight: "0.85" }}>Engineer</p>
+          <p className="text-[clamp(40px,5.5vw,80px)] font-bold uppercase tracking-tight text-white" style={{ lineHeight: "0.85" }}>Designer</p>
+          <p className="text-[clamp(40px,5.5vw,80px)] font-bold uppercase tracking-tight text-white" style={{ lineHeight: "0.85" }}>Creator*</p>
+        </div>
       </div>
+
+      {/* Right: title + grid */}
+      <div className="w-1/2 flex flex-col items-center">
+        <div className="w-fit">
+          <h2 className="text-[clamp(36px,5vw,72px)] font-bold uppercase leading-none tracking-tight text-white mb-[5vh] text-center">
+            Skills
+          </h2>
+
+          <div className="grid grid-cols-3 gap-x-16 gap-y-12">
+          {skills.map((group) => (
+            <div key={group.category}>
+              <p className="text-base uppercase tracking-widest text-white/40 mb-4 font-semibold">
+                {group.category}
+              </p>
+              <ul className="space-y-2">
+                {group.items.map((item) => (
+                  <li key={item} className="text-white/80 text-sm font-medium uppercase tracking-wide">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
