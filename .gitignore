@@ -1,3 +1,7 @@
+# Portfolio assets (keep images local only)
+src/assets/*
+!src/assets/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
