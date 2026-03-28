@@ -97,7 +97,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-3 text-white">
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-3 text-white">
             {personalInfo.name}
           </h1>
 
@@ -105,7 +105,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/60 mb-8 font-light"
+            className="text-xl md:text-2xl text-white/60 mb-4 font-light"
           >
             {personalInfo.title}
           </motion.p>
@@ -117,10 +117,10 @@ export default function Hero() {
             className="flex items-center gap-4"
           >
             <a
-              href="#projects"
+              href="#experience"
               className="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all"
             >
-              View Projects
+              View Experience
             </a>
             <a
               href="#contact"

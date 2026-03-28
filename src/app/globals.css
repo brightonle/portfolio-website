@@ -5,14 +5,20 @@ html.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --border: rgba(255, 255, 255, 0.08);
-  --muted: rgba(255, 255, 255, 0.4);
+  --muted: rgba(255, 255, 255, 0.45);
+  --subtle: rgba(255, 255, 255, 0.25);
+  --chip-bg: rgba(255, 255, 255, 0.05);
+  --chip-hover: rgba(255, 255, 255, 0.1);
 }
 
 html.light {
   --background: #f8f9fa;
   --foreground: #0d1116;
-  --border: rgba(0, 0, 0, 0.1);
-  --muted: rgba(0, 0, 0, 0.45);
+  --border: rgba(0, 0, 0, 0.12);
+  --muted: rgba(0, 0, 0, 0.55);
+  --subtle: rgba(0, 0, 0, 0.35);
+  --chip-bg: rgba(0, 0, 0, 0.06);
+  --chip-hover: rgba(0, 0, 0, 0.1);
 }
 
 * {
