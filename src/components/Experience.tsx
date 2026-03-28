@@ -51,21 +51,26 @@ export default function Experience() {
               >
                 {isFirst ? (
                   <>
-                    <div className="px-12 pt-16">
+                    <div className="px-12 pt-16 flex justify-between items-baseline">
+                      <h2 className="text-[clamp(40px,8vw,90px)] font-bold uppercase leading-none tracking-tight text-white">
+                        Technical
+                      </h2>
                       <h2 className="text-[clamp(40px,8vw,90px)] font-bold uppercase leading-none tracking-tight text-white">
                         Experience
                       </h2>
                     </div>
                     <div className="px-12 mt-[4vh]">
-                      <p className="text-xs uppercase tracking-widest text-white/40 mb-2">
-                        {exp.company}
-                      </p>
-                      <h3
-                        ref={(el) => { roleRefs.current[i] = el; }}
-                        className="text-2xl font-bold uppercase text-white leading-tight"
-                      >
-                        {exp.role}
-                      </h3>
+                      <div className="flex justify-between items-baseline">
+                        <h3
+                          ref={(el) => { roleRefs.current[i] = el; }}
+                          className="text-3xl font-bold uppercase text-white leading-tight"
+                        >
+                          {exp.role}
+                        </h3>
+                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight">
+                          {exp.company}
+                        </p>
+                      </div>
                       <p className="text-sm text-white/30 mt-3">{exp.period}</p>
                       <p className="text-white/60 leading-relaxed mt-6 max-w-xl text-sm">
                         {exp.description}
@@ -76,15 +81,17 @@ export default function Experience() {
                   <div className="px-12 pt-4">
                     <div className="h-[2px] bg-white/20" />
                     <div className="mt-5">
-                      <p className="text-xs uppercase tracking-widest text-white/40 mb-2">
-                        {exp.company}
-                      </p>
-                      <h3
-                        ref={(el) => { roleRefs.current[i] = el; }}
-                        className="text-2xl font-bold uppercase text-white leading-tight"
-                      >
-                        {exp.role}
-                      </h3>
+                      <div className="flex justify-between items-baseline">
+                        <h3
+                          ref={(el) => { roleRefs.current[i] = el; }}
+                          className="text-3xl font-bold uppercase text-white leading-tight"
+                        >
+                          {exp.role}
+                        </h3>
+                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight">
+                          {exp.company}
+                        </p>
+                      </div>
                       <p className="text-sm text-white/30 mt-3">{exp.period}</p>
                       <p className="text-white/60 leading-relaxed mt-6 max-w-xl text-sm">
                         {exp.description}
