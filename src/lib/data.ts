@@ -60,7 +60,7 @@ export const experience = [
     role: "Software Engineer",
     company: "Rev",
     period: "Sep 2024 – Dec 2024",
-    description: "Directed the build of a full-stack platform for the Museum of Fine Arts, Boston, leading engineers in developing scalable software across frontend and backend systems.",
+    description: "Directed the build of a full-stack platform for the Museum of Fine Arts, leading engineers in developing scalable software across systems.",
   },
   {
     role: "Data Engineer",

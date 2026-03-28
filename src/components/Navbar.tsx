@@ -36,18 +36,14 @@ export default function Navbar() {
           : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-lg font-semibold tracking-tight">
-          {personalInfo.name}
-        </a>
-
+      <div className="px-12 h-16 flex items-center justify-end">
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+              className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors px-1.5"
             >
               {link.label}
             </a>
@@ -56,16 +52,16 @@ export default function Navbar() {
             href={personalInfo.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm px-4 py-2 border border-[var(--border)] rounded-full hover:bg-[var(--foreground)]/5 transition-all"
+            className="text-xs uppercase tracking-widest px-3 py-1.5 border border-[var(--border)] rounded-full hover:bg-[var(--foreground)]/5 transition-all"
           >
             Resume
           </a>
           <button
             onClick={toggle}
             aria-label="Toggle theme"
-            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors ml-1"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
         </nav>
 
@@ -103,7 +99,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors py-1"
+                  className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors py-1"
                 >
                   {link.label}
                 </a>

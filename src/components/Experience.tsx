@@ -60,42 +60,38 @@ export default function Experience() {
                       </h2>
                     </div>
                     <div className="px-12 mt-[4vh]">
-                      <div className="flex justify-between items-baseline">
+                      <div className="flex justify-between items-start">
                         <h3
                           ref={(el) => { roleRefs.current[i] = el; }}
                           className="text-3xl font-bold uppercase text-white leading-tight"
                         >
                           {exp.role}
                         </h3>
-                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight">
-                          {exp.company}
-                        </p>
+                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight text-right">{exp.company}</p>
                       </div>
-                      <p className="text-sm text-white/30 mt-3">{exp.period}</p>
-                      <p className="text-white/60 leading-relaxed mt-6 max-w-xl text-sm">
-                        {exp.description}
-                      </p>
+                      <div className="flex justify-between items-baseline mt-4 gap-8">
+                        <p className="text-white/60 text-base">{exp.description}</p>
+                        <p className="text-white/30 text-sm shrink-0">({exp.period})</p>
+                      </div>
                     </div>
                   </>
                 ) : (
                   <div className="px-12 pt-4">
                     <div className="h-[2px] bg-white/20" />
                     <div className="mt-5">
-                      <div className="flex justify-between items-baseline">
+                      <div className="flex justify-between items-start">
                         <h3
                           ref={(el) => { roleRefs.current[i] = el; }}
                           className="text-3xl font-bold uppercase text-white leading-tight"
                         >
                           {exp.role}
                         </h3>
-                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight">
-                          {exp.company}
-                        </p>
+                        <p className="text-3xl font-bold uppercase text-white/50 leading-tight text-right">{exp.company}</p>
                       </div>
-                      <p className="text-sm text-white/30 mt-3">{exp.period}</p>
-                      <p className="text-white/60 leading-relaxed mt-6 max-w-xl text-sm">
-                        {exp.description}
-                      </p>
+                      <div className="flex justify-between items-baseline mt-4 gap-8">
+                        <p className="text-white/60 text-base">{exp.description}</p>
+                        <p className="text-white/30 text-sm shrink-0">({exp.period})</p>
+                      </div>
                     </div>
                   </div>
                 )}

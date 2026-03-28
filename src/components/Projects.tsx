@@ -24,7 +24,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="grid grid-cols-2 min-h-screen">
+    <section id="projects" className="grid grid-cols-2 min-h-screen scroll-mt-16">
 
       {/* Left: sticky counter */}
       <div className="sticky top-0 h-screen flex flex-col justify-end pb-16 px-10 border-r-2 border-white/20">

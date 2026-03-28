@@ -15,7 +15,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="scroll-mt-35 py-16 px-6 max-w-6xl mx-auto" ref={ref}>
+    <section id="about" className="scroll-mt-10 py-16 px-6 max-w-6xl mx-auto" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
