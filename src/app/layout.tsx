@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="scroll-smooth light">
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-300">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
