@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import GithubIcon from "@/components/icons/GithubIcon";
 import { projects } from "@/lib/data";
@@ -24,10 +25,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="grid grid-cols-2 min-h-screen scroll-mt-16">
+    <section id="projects" className="grid grid-cols-1 md:grid-cols-2 min-h-screen scroll-mt-16">
 
-      {/* Left: sticky counter */}
-      <div className="sticky top-0 h-screen flex flex-col justify-end pb-16 px-10 border-r-2 border-white/20">
+      {/* Left: sticky counter — hidden on mobile */}
+      <div className="hidden md:flex sticky top-0 h-screen flex-col justify-end pb-16 px-10 border-r-2 border-white/20">
         <div className="flex overflow-hidden">
           <span className="text-[clamp(80px,14vw,160px)] font-bold leading-none tracking-tight text-white">
             0
@@ -49,16 +50,25 @@ export default function Projects() {
 
       {/* Right: PROJECTS label at top so it peeks below About, then scrolling cards */}
       <div>
-        <div className="px-10 pt-6 pb-8">
-          <h2 className="text-[clamp(60px,12vw,130px)] font-bold uppercase leading-none tracking-tight text-white">
-            Projects
-          </h2>
+        <div className="pt-6 pb-0">
+          <div className="px-6 md:px-10 pb-8">
+            <h2 className="text-[clamp(60px,12vw,130px)] font-bold uppercase leading-none tracking-tight text-white">
+              Projects
+            </h2>
+          </div>
+          {projects[0].image && (
+            <Image
+              src={projects[0].image}
+              alt={`${projects[0].title} screenshot`}
+              className="w-full border-b-2 border-white/20"
+            />
+          )}
         </div>
         {projects.map((project, i) => (
           <div
             key={project.title}
             ref={(el) => { cardRefs.current[i] = el; }}
-            className="min-h-screen flex flex-col justify-center px-10 py-16 border-b-2 border-white/20 last:border-b-0"
+            className={`flex flex-col px-6 md:px-10 border-b-2 border-white/20 last:border-b-0 ${i === 0 ? "pt-10 pb-16 min-h-0" : "min-h-screen justify-center py-16"}`}
           >
             <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
             <p className="text-white/60 leading-relaxed mb-8 max-w-md">

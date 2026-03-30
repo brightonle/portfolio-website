@@ -1,3 +1,5 @@
+import ClimbAIProject from "@/assets/ClimbAIProject.png";
+
 export const personalInfo = {
   name: "Brighton Le",
   title: "Full-Stack Engineer",
@@ -24,6 +26,7 @@ export const projects = [
     tags: ["Python", "SQL", "Neo4j", "React.js", "Docker"],
     github: "https://github.com/brightonle/climbai",
     live: null,
+    image: ClimbAIProject,
   },
   {
     title: "Markit",

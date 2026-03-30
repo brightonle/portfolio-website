@@ -20,7 +20,7 @@ function HeroBackground() {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col px-12 pt-24 pb-4 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col px-6 md:px-12 pt-24 pb-4 relative overflow-hidden">
       <HeroBackground />
       <div className="absolute inset-0 -z-10 bg-black/60" />
 
@@ -49,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex items-center gap-4 mb-0"
           >
-            <div className="w-[170px] h-[170px] rounded-full overflow-hidden border-2 border-white/10 relative shrink-0">
+            <div className="w-[110px] h-[110px] md:w-[170px] md:h-[170px] rounded-full overflow-hidden border-2 border-white/10 relative shrink-0">
               <Image
                 src={avatarImg}
                 alt={personalInfo.name}

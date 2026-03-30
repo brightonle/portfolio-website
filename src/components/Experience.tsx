@@ -1,11 +1,33 @@
 "use client";
 
-import { Fragment, useState, useRef, useLayoutEffect } from "react";
+import { Fragment, useState, useRef, useLayoutEffect, useEffect } from "react";
 import { experience } from "@/lib/data";
 
 const CARDS = experience;
 
-export default function Experience() {
+function MobileExperience() {
+  return (
+    <section id="experience" className="px-6 py-16" style={{ backgroundColor: "#0a0a0a" }}>
+      <h2 className="text-[clamp(40px,10vw,90px)] font-bold uppercase leading-none tracking-tight text-white mb-12">
+        Technical<br />Experience
+      </h2>
+      <div className="flex flex-col gap-0">
+        {CARDS.map((exp, i) => (
+          <div key={i} className="py-8 border-t-2 border-white/20">
+            <div className="flex justify-between items-start mb-3 gap-4">
+              <h3 className="text-xl font-bold uppercase text-white leading-tight">{exp.role}</h3>
+              <p className="text-base font-bold uppercase text-white/50 leading-tight text-right shrink-0">{exp.company}</p>
+            </div>
+            <p className="text-white/60 text-sm leading-relaxed mb-2">{exp.description}</p>
+            <p className="text-white/30 text-xs">({exp.period})</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function DesktopExperience() {
   const [peeks, setPeeks] = useState<number[]>([]);
   const [containerHeight, setContainerHeight] = useState(`${CARDS.length * 200}vh`);
 
@@ -23,7 +45,6 @@ export default function Experience() {
       const roleBottom = role.getBoundingClientRect().bottom;
       computed.push(prevPeek + (roleBottom - cardTop) + 10);
     }
-    // Total scroll height = N cards (each 100vh) + (N-1) spacers (each 100vh) - peek savings
     const vh = window.innerHeight;
     const totalPx = CARDS.length * vh + (CARDS.length - 1) * vh - computed.reduce((a, b) => a + b, 0);
     setContainerHeight(`${totalPx}px`);
@@ -104,4 +125,17 @@ export default function Experience() {
       </div>
     </section>
   );
+}
+
+export default function Experience() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return isMobile ? <MobileExperience /> : <DesktopExperience />;
 }
