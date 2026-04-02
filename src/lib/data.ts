@@ -1,4 +1,5 @@
 import ClimbAIProject from "@/assets/ClimbAIProject.png";
+import MarkitProject from "@/assets/projectMar.png";
 
 export const personalInfo = {
   name: "Brighton Le",
@@ -29,12 +30,13 @@ export const projects = [
     image: ClimbAIProject,
   },
   {
-    title: "Markit",
+    title: "TrendPulse",
     description:
-      "A cloud-based job market analytics platform that ingests and standardizes job posting data to uncover hiring trends, salary benchmarks, and in-demand skills across technical roles.",
-    tags: ["Python", "PostgreSQL", "AWS", "Docker"],
+      "An automated market intelligence platform that leverages multi-agent AI orchestration to transform unstructured competitor and social media data into actionable trend reports with strategic recommendations.",
+    tags: ["JavaScript", "N8n", "REST APIs", "AI Agents", "Docker"],
     github: "https://github.com/brightonle/talentlens",
     live: null,
+    image: MarkitProject,
   },
   {
     title: "Tasti",

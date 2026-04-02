@@ -68,8 +68,16 @@ export default function Projects() {
           <div
             key={project.title}
             ref={(el) => { cardRefs.current[i] = el; }}
-            className={`flex flex-col px-6 md:px-10 border-b-2 border-white/20 last:border-b-0 ${i === 0 ? "pt-10 pb-16 min-h-0" : "min-h-screen justify-center py-16"}`}
+            className={`flex flex-col border-b-2 border-white/20 last:border-b-0 ${i === 0 ? "pt-10 pb-16 min-h-0" : "min-h-screen justify-center"}`}
           >
+            {i !== 0 && project.image && (
+              <Image
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                className="w-full border-b-2 border-white/20 mb-0"
+              />
+            )}
+            <div className={`flex flex-col px-6 md:px-10 ${i !== 0 && project.image ? "pt-10 pb-16" : i === 0 ? "" : "py-16"}`}>
             <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
             <p className="text-white/60 leading-relaxed mb-8 max-w-md">
               {project.description}
@@ -103,6 +111,7 @@ export default function Projects() {
                   <ExternalLink size={16} /> Live
                 </a>
               )}
+            </div>
             </div>
           </div>
         ))}
