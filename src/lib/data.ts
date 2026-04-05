@@ -1,5 +1,7 @@
 import ClimbAIProject from "@/assets/ClimbAIProject.png";
 import MarkitProject from "@/assets/projectMar.png";
+import TastiImg1 from "@/assets/tasti.png";
+import TastiImg2 from "@/assets/tasti2.png";
 
 export const personalInfo = {
   name: "Brighton Le",
@@ -45,6 +47,7 @@ export const projects = [
     tags: ["React Native", "JavaScript", "PostgreSQL", "Node.js", "Jest"],
     github: "https://github.com/brightonle/tasti",
     live: null,
+    images: [TastiImg1, TastiImg2],
   },
 ];
 

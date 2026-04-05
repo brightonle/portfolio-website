@@ -77,7 +77,16 @@ export default function Projects() {
                 className="w-full border-b-2 border-white/20 mb-0"
               />
             )}
-            <div className={`flex flex-col px-6 md:px-10 ${i !== 0 && project.image ? "pt-10 pb-16" : i === 0 ? "" : "py-16"}`}>
+            {i !== 0 && project.images && (
+              <div className="flex border-b-2 border-white/20">
+                {project.images.map((img, idx) => (
+                  <div key={idx} className={`flex-1 ${idx < project.images!.length - 1 ? "border-r-2 border-white/20" : ""}`}>
+                    <Image src={img} alt={`${project.title} screenshot ${idx + 1}`} className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className={`flex flex-col px-6 md:px-10 ${i !== 0 && (project.image || project.images) ? "pt-10 pb-16" : i === 0 ? "" : "py-16"}`}>
             <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
             <p className="text-white/60 leading-relaxed mb-8 max-w-md">
               {project.description}
