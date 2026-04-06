@@ -53,6 +53,12 @@ export const projects = [
 
 export const experience = [
   {
+    role: "AI Automation Engineer",
+    company: "Wayfair",
+    period: "Jan 2026 – Present",
+    description: "Architected a multi-agent AI platform that automated competitive market analysis by processing product and social trend data to generate strategic merchandising recommendations.",
+  },
+  {
     role: "Data Engineer",
     company: "Fidelity Investments",
     period: "Jun 2025 – Aug 2025",
